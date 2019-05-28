@@ -12,18 +12,35 @@ class Camera {
    * @returns {Camera} Camera object created
    */
   constructor(shader) {
-    this.speed = 0.4;
+    this.speed = 0.3;
     // Camera view attributes
-    this.eye = new Vector3([32, 4, -32]);
-    this.center = new Vector3([0, 4, 0]);
+    this.eye = new Vector3([16, 4, -3]);
+    this.center = new Vector3([-10, 4, -3]);
     this.up = new Vector3([0, 1, 0]);
 
+    //camera animation data - includes
+    this.time = 1 / 60;
+    this.animating = 0;
     this.viewMatrix = new Matrix4();
-    this.updateView();
+    this.startPosEye = new Vector3(this.eye.elements);
+    this.endPosEye = new Vector3([0, 0, -8]);
+    this.endPosEye = this.endPosEye.add(this.startPosEye);
+
+    this.startPosCenter = new Vector3(this.center.elements);
+    this.endPosCenter = new Vector3([0, 0, -8]);
+    this.endPosCenter = this.endPosCenter.add(this.startPosCenter);
+    this.duration = 1;
+
+    //camera movementand projection
 
     this.rotationMatrix = new Matrix4();
     this.projectionMatrix = new Matrix4();
-    this.projectionMatrix.setPerspective(45, 1, 0.5, 100);
+    this.projectionMatrix.setPerspective(
+      35,
+      window.innerWidth / window.innerHeight,
+      0.5,
+      80
+    );
   }
 
   truck(dir) {
@@ -112,7 +129,34 @@ class Camera {
 
     this.projectionMatrix.setPerspective(30, 1, 0.5, 100 - dir);
   }
-  move() {}
+  /**
+   * Animates the camera along a line using linear interpolation 
+   * 
+   * Starts at @eye ends at specified point
+   */
+  updateAnimation(){
+    this.time+= .005;
+    if(this.time >=this.duration){
+      this.animating = 0;
+      this.time = 0;
+      this.startPosEye = new Vector3(this.eye.elements);
+      this.endPosEye = new Vector3([0, 0, -8]);
+      this.endPosEye = this.endPosEye.add(this.startPosEye);
+  
+      this.startPosCenter = new Vector3(this.center.elements);
+      this.endPosCenter = new Vector3([0, 0, -8]);
+      this.endPosCenter = this.endPosCenter.add(this.startPosCenter);
+    }else{
+      
+      var eyeProgress = this.endPosEye.sub(this.startPosEye).mul(this.time).add(this.startPosEye);
+      var centerProgress = this.endPosCenter.sub(this.startPosCenter).mul(this.time).add(this.startPosCenter);
+      this.eye = eyeProgress;
+      this.center = centerProgress;
+      this.updateView();
+    }
+
+
+  }
   updateView() {
     this.viewMatrix.setLookAt(
       this.eye.elements[0],

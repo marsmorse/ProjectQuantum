@@ -39,10 +39,10 @@ class Square extends Geometry {
   }
   generateSquareVertices() {
     var vertices = [];
-    var vertex0 = new Vertex(32, -0.5, -32);
-    var vertex1 = new Vertex(32, -0.5, 0.0);
-    var vertex2 = new Vertex(0, -0.5, 0.0);
-    var vertex3 = new Vertex(0, -0.5, -32);
+    var vertex0 = new Vertex(0, 20, -20);
+    var vertex1 = new Vertex(0, 0, -20);
+    var vertex2 = new Vertex(0, 0, 0.0);
+    var vertex3 = new Vertex(0, 20, 0);
 
     vertex0.texCoord = [1, 1];
     vertex1.texCoord = [1, 0];

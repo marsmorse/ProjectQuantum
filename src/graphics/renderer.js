@@ -49,7 +49,7 @@ class Renderer {
 
     for (var i = 0; i < this.scene.geometries.length; i++) {
       var geometry = this.scene.geometries[i];
-      this.scene.light.orbit();
+      //this.scene.light.orbit();
       // Switch to shader attached to geometry
       this.gl.useProgram(geometry.shader.program);
       this.gl.program = geometry.shader.program;
@@ -62,6 +62,9 @@ class Renderer {
           "u_SpecularColor",
           this.scene.light.specular
         );
+      }
+      if (this.camera.animating == 1){
+        this.camera.updateAnimation();
       }
       geometry.shader.setUniform(
         "u_ViewMatrix",
@@ -87,7 +90,6 @@ class Renderer {
           );
         }
       }
-
       // Callback function in the case user wants to change the
       // geometry before the draw call
       geometry.render();

@@ -47,11 +47,6 @@ class InputHandler {
     };
 
     // HTML Slider Events
-    document
-      .getElementById("exampleSlider")
-      .addEventListener("mouseup", function() {
-        console.log(this.value);
-      });
   }
 
   /**
@@ -93,6 +88,8 @@ class InputHandler {
       this.camera.zoom(5);
     } else if (keyName == "e") {
       this.camera.zoom(-5);
+    }else if (keyName == "z") {
+      this.camera.animating = 1;
     }
   }
 

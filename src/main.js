@@ -12,7 +12,7 @@ function main() {
   }
 
   // Initialize the scene
-  var light = new Light(16, 0, 16);
+  var light = new Light(16, 8, -16);
   var scene = new Scene();
   var camera = new Camera();
   scene.setLight(light);
@@ -1429,14 +1429,10 @@ function main() {
   // Load texture and add triangle to the scene with that texture.
 
   inputHandler.readTexture("objs/clouds5-basic.png", function(image) {
-    var shape = new SkyCube(texShader, image);
-    scene.addGeometry(shape);
-  });
-  inputHandler.readTexture("objs/marble.jpg", function(image) {
     var shape = new Square(texShader, image);
     scene.addGeometry(shape);
   });
-
+  /*
   inputHandler.readTexture("objs/image.jpg", function(image) {
     for (var i = 0; i < layout.length; i++) {
       for (var j = 0; j < layout[0].length; j++) {
@@ -1446,7 +1442,7 @@ function main() {
         }
       }
     }
-  });
+  });*/
   var shape = new Sphere(colorShader, 30, 2, -2);
   scene.addGeometry(shape);
   var shape = new Sphere(colorShader, 30, 30, -30);
