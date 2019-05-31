@@ -18,13 +18,12 @@ class Renderer {
     this.gl = gl;
     this.scene = scene;
     this.camera = camera;
-
+    
     this.textures = {};
 
     this.initGLSLBuffers();
-
     // Setting canvas' clear color
-    this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    this.gl.clearColor(1.0, 1.0, 1.0, 1.0);
 
     // Use the z-buffer when drawing
     this.gl.enable(gl.DEPTH_TEST);
@@ -36,6 +35,9 @@ class Renderer {
    * Starts an animation loop
    */
   start() {
+    if (_renderer.camera.animating == 1){
+      _renderer.camera.updateAnimation();
+    }
     _renderer.render();
     requestAnimationFrame(_renderer.start);
   }
@@ -63,9 +65,7 @@ class Renderer {
           this.scene.light.specular
         );
       }
-      if (this.camera.animating == 1){
-        this.camera.updateAnimation();
-      }
+
       geometry.shader.setUniform(
         "u_ViewMatrix",
         this.camera.viewMatrix.elements

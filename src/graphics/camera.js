@@ -15,9 +15,10 @@ class Camera {
     this.speed = 0.3;
     // Camera view attributes
     this.eye = new Vector3([16, 4, -3]);
-    this.center = new Vector3([-10, 4, -3]);
+    this.center = new Vector3([-16, 4, -3]);
     this.up = new Vector3([0, 1, 0]);
 
+    this.canRotate = -1;
     //camera animation data - includes
     this.time = 1 / 60;
     this.animating = 0;

@@ -54,17 +54,21 @@ class InputHandler {
    */
   mouseClick(ev) {
     // Print x,y coordinates.
-    console.log(ev.clientX, ev.clientY);
-
-    var shape = new Triangle(texShader);
-    this.scene.addGeometry(shape);
+    this.camera.canRotate *=-1;
   }
 
   mouseMove(ev) {
-    var movementX = ev.movementX;
-    this.camera.pan(movementX);
-    var movementY = ev.movementY;
-    this.camera.tilt(movementY);
+    if(this.camera.canRotate==1){
+      var movementX = ev.movementX;
+      this.camera.pan(movementX);
+      var movementY = ev.movementY;
+      this.camera.tilt(movementY);
+    }/*
+      var movementX = ev.movementX;
+      this.camera.pan(movementX);
+      var movementY = ev.movementY;
+      this.camera.tilt(movementY);*/
+
   }
 
   keyUp(ev) {
@@ -90,7 +94,10 @@ class InputHandler {
       this.camera.zoom(-5);
     }else if (keyName == "z") {
       this.camera.animating = 1;
+    }else if (keyName == "x") {
+      this.scene.clearGeometries();
     }
+    
   }
 
   /**
