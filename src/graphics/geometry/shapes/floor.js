@@ -39,10 +39,10 @@ class Floor extends Geometry {
     }
     generateFloorVertices() {
       var vertices = [];
-      var vertex0 = new Vertex(28, -0.5, -32);
-      var vertex1 = new Vertex(28, -0.5, 0.0);
-      var vertex2 = new Vertex(-4, -0.5, 0.0);
-      var vertex3 = new Vertex(-4, -0.5, -32);
+      var vertex0 = new Vertex(28, -0.5, -21);
+      var vertex1 = new Vertex(28, -0.5, -1.0);
+      var vertex2 = new Vertex(-4, -0.5, -1.0);
+      var vertex3 = new Vertex(-4, -0.5, -21);
   
       vertex0.texCoord = [1, 1];
       vertex1.texCoord = [1, 0];
