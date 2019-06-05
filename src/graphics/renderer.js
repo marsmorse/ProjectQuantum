@@ -20,6 +20,15 @@ class Renderer {
     this.camera = camera;
     
     this.textures = {};
+    this.timeElement = document.getElementById("time");
+    this.angleElement = document.getElementById("angle");
+
+    this.timeNode = document.createTextNode("");
+    this.angleNode = document.createTextNode("");
+ 
+   // Add those text nodes where they need to go
+    this.timeElement.appendChild(this.timeNode);
+    this.angleElement.appendChild(this.angleNode);
 
     this.initGLSLBuffers();
     // Setting canvas' clear color
@@ -49,6 +58,11 @@ class Renderer {
     // Clear the geometry onscreen
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
+    //for the text overlay
+    this.angleNode.nodeValue = "The Ultimate 3D experience";  // no decimal place
+    this.timeNode.nodeValue = "Welcome to Project Quantum"; 
+
+    //for all the shapes
     for (var i = 0; i < this.scene.geometries.length; i++) {
       var geometry = this.scene.geometries[i];
       //this.scene.light.orbit();

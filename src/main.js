@@ -15,6 +15,7 @@ function main() {
   var ctx = hud.getContext('2d');
 
 
+  layout = [[1,0,0,0],[1,0,0,0],[2,0,0,0],[4,0,0,0]];
   // Initialize the scene
   var light = new Light(16, 8, -16);
   var scene = new Scene();
@@ -73,6 +74,7 @@ function main() {
     scene.addGeometry(flr);
   });
   /*
+  
   inputHandler.readTexture("objs/image.jpg", function(image) {
     for (var i = 0; i < layout.length; i++) {
       for (var j = 0; j < layout[0].length; j++) {
