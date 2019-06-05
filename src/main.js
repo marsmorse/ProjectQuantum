@@ -62,7 +62,7 @@ function main() {
 
   // Load texture and add triangle to the scene with that texture.
 
-  inputHandler.readTexture("logo256.png", function(image) {
+  inputHandler.readTexture("objs/logo256.png", function(image) {
     var shape = new Square(texShader, image);
     scene.addGeometry(shape);
   });
@@ -77,8 +77,16 @@ function main() {
       }
     }
   });*/
-  var shape = new Sphere(colorShader, 30, 2, 15, -2);
+  var shape = new Sphere(colorShader, 30, 2, 20, -5);
   scene.addGeometry(shape);
+  var shape2 = new Sphere(colorShader, 30, 2, 20, -17);
+  scene.addGeometry(shape2);
+
+  // var shape2 = new Sphere(colorShader, 30, 5, 15, 5);
+  // scene.addGeometry(shape2);
+
+  // var shape3 = new Sphere(colorShader, 30, 7, 15, 8);
+  // scene.addGeometry(shape3);
 
   var currentAngle = 0.0;
 
