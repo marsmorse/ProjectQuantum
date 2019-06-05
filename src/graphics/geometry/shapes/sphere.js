@@ -6,19 +6,21 @@ class Sphere extends Geometry {
    * @param {Shader} shader Shading object used to shade geometry
    * @returns {Sphere} Sphere created
    */
-  constructor(shader, segments, x, z) {
+  constructor(shader, segments, x, y, z) {
     super(shader);
     this.x = x;
+    this.xvel = 0;
+    this.y = y;
+    this.yvel = 0.5;
     this.z = z;
+    this.zvel = 0;
+    this.accel = -0.015;
     this.vertices = this.generateSphereVertices(segments);
     this.transformMatrix = new Matrix4();
-    this.transformMatrix.setTranslate(this.x, 2, this.z);
+    this.transformMatrix.setTranslate(this.x, this.y, this.z);
     this.modelMatrix = this.modelMatrix.multiply(this.transformMatrix);
     // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
     this.interleaveVertices();
-  }
-  render() {
-    super.render();
   }
 
   generateSphereVertices(segments) {
@@ -112,5 +114,42 @@ class Sphere extends Geometry {
     // Transform geometry here!
     // Rotations!
     super.render();
+
+    // Collision Detection x bounds
+    if(this.x > 29) {
+      this.xvel = -1 * Math.abs(this.xvel);
+    } else if(this.x < 1) {
+      this.xvel = Math.abs(this.xvel);
+    }
+
+    // Collision Detection y bounds
+    if(this.y > 29) {
+      this.yvel = -1 * Math.abs(this.yvel);
+    } else if(this.y < 0.8) {
+      this.yvel = Math.abs(this.yvel);
+      this.yvel = this.yvel * 0.75;
+    }
+
+    // Collision Detection z bounds
+    if(this.z > 0) {
+      this.zvel = -1 * Math.abs(this.zvel);
+    } else if(this.z < -29) {
+      this.zvel = Math.abs(this.zvel);
+    }
+
+    if(this.y > 0.5) {
+      this.yvel = this.yvel + this.accel;
+    }
+    
+
+    this.transformMatrix.setTranslate(this.xvel,this.yvel,this.zvel);
+    this.x = this.x + this.xvel;
+    //console.log("xpos = " + this.x);
+    this.y = this.y + this.yvel;
+    //console.log("ypos = " + this.y);
+    this.z = this.z + this.zvel;
+    //console.log("zpos = " + this.z);
+    this.modelMatrix = this.modelMatrix.multiply(this.transformMatrix);
+
   }
 }

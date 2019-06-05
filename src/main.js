@@ -62,7 +62,7 @@ function main() {
 
   // Load texture and add triangle to the scene with that texture.
 
-  inputHandler.readTexture("objs/clouds5-basic.png", function(image) {
+  inputHandler.readTexture("logo256.png", function(image) {
     var shape = new Square(texShader, image);
     scene.addGeometry(shape);
   });
@@ -77,9 +77,7 @@ function main() {
       }
     }
   });*/
-  var shape = new Sphere(colorShader, 30, 2, -2);
-  scene.addGeometry(shape);
-  var shape = new Sphere(colorShader, 30, 30, -30);
+  var shape = new Sphere(colorShader, 30, 2, 15, -2);
   scene.addGeometry(shape);
 
   var currentAngle = 0.0;
