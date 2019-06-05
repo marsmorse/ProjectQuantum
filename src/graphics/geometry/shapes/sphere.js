@@ -9,11 +9,11 @@ class Sphere extends Geometry {
   constructor(shader, segments, x, y, z) {
     super(shader);
     this.x = x;
-    this.xvel = 0;
+    this.xvel = 0.1;
     this.y = y;
     this.yvel = 0.5;
     this.z = z;
-    this.zvel = 0;
+    this.zvel = 0.2;
     this.accel = -0.015;
     this.vertices = this.generateSphereVertices(segments);
     this.transformMatrix = new Matrix4();
@@ -116,9 +116,9 @@ class Sphere extends Geometry {
     super.render();
 
     // Collision Detection x bounds
-    if(this.x > 29) {
+    if(this.x > 6) {
       this.xvel = -1 * Math.abs(this.xvel);
-    } else if(this.x < 1) {
+    } else if(this.x < -1) {
       this.xvel = Math.abs(this.xvel);
     }
 
@@ -127,13 +127,13 @@ class Sphere extends Geometry {
       this.yvel = -1 * Math.abs(this.yvel);
     } else if(this.y < 0.8) {
       this.yvel = Math.abs(this.yvel);
-      this.yvel = this.yvel * 0.75;
+      this.yvel = this.yvel * 0.9;
     }
 
     // Collision Detection z bounds
-    if(this.z > 0) {
+    if(this.z > -4) {
       this.zvel = -1 * Math.abs(this.zvel);
-    } else if(this.z < -29) {
+    } else if(this.z < -18) {
       this.zvel = Math.abs(this.zvel);
     }
 

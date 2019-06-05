@@ -10,10 +10,11 @@ class InputHandler {
   /**
    * Initializes the event handeling functions within the program.
    */
-  constructor(canvas, scene, camera) {
+  constructor(canvas, scene, camera, hud) {
     this.canvas = canvas;
     this.scene = scene;
     this.camera = camera;
+    this.hud = hud;
 
     _inputHandler = this;
 
@@ -23,6 +24,12 @@ class InputHandler {
     };
     this.canvas.onmousemove = function(ev) {
       _inputHandler.mouseMove(ev);
+    };
+    this.hud.onmousedown = function(ev) {
+      _inputHandler.hudClick(ev);
+    };
+    this.hud.onmouseup = function(ev) {
+      _inputHandler.hudUpClick(ev);
     };
 
     // Keyboard Events
@@ -52,6 +59,30 @@ class InputHandler {
   /**
    * Function called upon mouse click.
    */
+
+  hudClick(ev) {
+    var ctx = this.hud.getContext('2d');
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(10, 10, 50, 50);
+
+    this.camera.animating = 1;    
+  }
+
+  hudUpClick(ev) {
+    var ctx = this.hud.getContext('2d');
+    ctx.clearRect(0, 0, 400, 400); // Clear <hud>
+    var rectangle = new Path2D();
+    rectangle.rect(10, 10, 50, 50);
+    
+    ctx.stroke(rectangle);
+
+    ctx.strokeStyle = 'rgba(0, 0, 0, 1)'; // Set the line color
+    // Draw white letters
+    ctx.font = '12px "Times New Roman"';
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)'; // Set the letter color
+    ctx.fillText('Next Scene', 10, 75);
+  }
+
   mouseClick(ev) {
     // Print x,y coordinates.
     this.camera.canRotate *=-1;
@@ -96,6 +127,9 @@ class InputHandler {
       this.camera.animating = 1;
     }else if (keyName == "x") {
       this.scene.clearGeometries();
+    } else if(keyName == "c") {
+      var circ = new Sphere(colorShader, 30, 2, 14, -8);
+      this.scene.addGeometry(circ);
     }
     
   }
