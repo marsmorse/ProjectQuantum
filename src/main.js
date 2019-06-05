@@ -67,6 +67,11 @@ function main() {
     var shape = new Square(texShader, image);
     scene.addGeometry(shape);
   });
+
+  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+    var flr = new Floor(texShader, image);
+    scene.addGeometry(flr);
+  });
   /*
   inputHandler.readTexture("objs/image.jpg", function(image) {
     for (var i = 0; i < layout.length; i++) {
@@ -78,9 +83,9 @@ function main() {
       }
     }
   });*/
-  var shape = new Sphere(colorShader, 30, 2, 20, -5);
+  var shape = new Sphere(colorShader, 30, 2, 14, -5);
   scene.addGeometry(shape);
-  var shape2 = new Sphere(colorShader, 30, 2, 20, -17);
+  var shape2 = new Sphere(colorShader, 30, 2, 17, -17);
   scene.addGeometry(shape2);
 
   // var shape2 = new Sphere(colorShader, 30, 5, 15, 5);
