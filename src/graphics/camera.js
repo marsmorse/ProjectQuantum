@@ -17,31 +17,38 @@ class Camera {
     this.eye = new Vector3([16, 4, -3]);
     this.center = new Vector3([-16, 4, -3]);
     this.up = new Vector3([0, 1, 0]);
+    
+    this.animationStack = [];
+    this.animationStack.push([0,0,-8]);
+    this.animationStack.push([-25,0,0]);
+    this.animationStack.push([-10,-9,-6]);
 
-    this.canRotate = -1;
+    this.z = 8;
+    this.canRotate = 1;
     //camera animation data - includes
     this.time = 1 / 60;
+
     this.animating = 0;
-    this.viewMatrix = new Matrix4();
     this.startPosEye = new Vector3(this.eye.elements);
-    this.endPosEye = new Vector3([0, 0, -8]);
+    this.endPosEye = new Vector3([0, 0, -this.z]);
     this.endPosEye = this.endPosEye.add(this.startPosEye);
 
     this.startPosCenter = new Vector3(this.center.elements);
-    this.endPosCenter = new Vector3([0, 0, -8]);
+    this.endPosCenter = new Vector3([0, 0, -this.z]);
     this.endPosCenter = this.endPosCenter.add(this.startPosCenter);
     this.duration = 1;
 
     //camera movementand projection
-
+    this.viewMatrix = new Matrix4();
     this.rotationMatrix = new Matrix4();
     this.projectionMatrix = new Matrix4();
     this.projectionMatrix.setPerspective(
-      35,
+      45,
       window.innerWidth / window.innerHeight,
       0.5,
       80
     );
+    this.updateView();
   }
 
   truck(dir) {
@@ -136,17 +143,9 @@ class Camera {
    * Starts at @eye ends at specified point
    */
   updateAnimation(){
-    this.time+= .005;
+    this.time+= .008;
     if(this.time >=this.duration){
-      this.animating = 0;
-      this.time = 0;
-      this.startPosEye = new Vector3(this.eye.elements);
-      this.endPosEye = new Vector3([0, 0, -8]);
-      this.endPosEye = this.endPosEye.add(this.startPosEye);
-  
-      this.startPosCenter = new Vector3(this.center.elements);
-      this.endPosCenter = new Vector3([0, 0, -8]);
-      this.endPosCenter = this.endPosCenter.add(this.startPosCenter);
+      this.resetAnimation(25,0);
     }else{
       
       var eyeProgress = this.endPosEye.sub(this.startPosEye).mul(this.time).add(this.startPosEye);
@@ -157,6 +156,18 @@ class Camera {
     }
 
 
+  }
+  //Specifies direction for next animation
+  resetAnimation(forward,right){
+    this.animating = 0;
+      this.time = 0;
+      this.startPosEye = new Vector3(this.eye.elements);
+      this.endPosEye = new Vector3([-forward, 0, -right]);
+      this.endPosEye = this.endPosEye.add(this.startPosEye);
+  
+      this.startPosCenter = new Vector3(this.center.elements);
+      this.endPosCenter = new Vector3([-forward, 0, -right]);
+      this.endPosCenter = this.endPosCenter.add(this.startPosCenter);
   }
   updateView() {
     this.viewMatrix.setLookAt(
