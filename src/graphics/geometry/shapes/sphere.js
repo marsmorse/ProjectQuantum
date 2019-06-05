@@ -143,16 +143,16 @@ class Sphere extends Geometry {
     
     // Account for friction
     if(this.y < 0.51 && this.xvel > 0) {
-      this.xvel = this.xvel - 0.0014;
+      this.xvel = this.xvel - 0.0016;
     } else if(this.y < 0.51 && this.xvel < 0) {
-      this.xvel = this.xvel + 0.0014;
+      this.xvel = this.xvel + 0.0016;
     }
 
     // Account for friction
     if(this.y < 0.51 && this.zvel > 0) {
-      this.zvel = this.zvel - 0.0014;
+      this.zvel = this.zvel - 0.0016;
     } else if(this.y < 0.51 && this.zvel < 0) {
-      this.zvel = this.zvel + 0.0014;
+      this.zvel = this.zvel + 0.0016;
     }
 
     
