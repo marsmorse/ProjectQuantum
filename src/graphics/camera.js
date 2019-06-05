@@ -14,7 +14,7 @@ class Camera {
   constructor(shader) {
     this.speed = 0.3;
     // Camera view attributes
-    this.eye = new Vector3([18, 4, -3]);
+    this.eye = new Vector3([22, 4, -3]);
     this.center = new Vector3([-16, 4, -3]);
     this.up = new Vector3([0, 1, 0]);
 
