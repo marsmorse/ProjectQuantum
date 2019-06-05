@@ -14,13 +14,14 @@ function main() {
 
   var ctx = hud.getContext('2d');
 
+
   // Initialize the scene
   var light = new Light(16, 8, -16);
   var scene = new Scene();
   var camera = new Camera();
   scene.setLight(light);
   
-  var inputHandler = new InputHandler(canvas, scene, camera);
+  var inputHandler = new InputHandler(canvas, scene, camera, hud);
 
   // Initialize colorShader
   colorShader = new Shader(gl, ASG1_VSHADER, ASG1_FSHADER);
@@ -82,26 +83,24 @@ function main() {
   var shape = new Sphere(colorShader, 30, 30, -30);
   scene.addGeometry(shape);
 
-  var currentAngle = 0.0;
+  draw2D(ctx);
 
-  draw2D(ctx, currentAngle);
-
-  function draw2D(ctx, currentAngle) {
+  function draw2D(ctx) {
     ctx.clearRect(0, 0, 400, 400); // Clear <hud>
     // Draw triangle with white lines
     
 
     var rectangle = new Path2D();
     rectangle.rect(10, 10, 50, 50);
+    
     ctx.stroke(rectangle);
     
     ctx.strokeStyle = 'rgba(0, 0, 0, 1)'; // Set the line color
     // Draw white letters
-    ctx.font = '18px "Times New Roman"';
+    ctx.font = '12px "Times New Roman"';
     ctx.fillStyle = 'rgba(0, 0, 0, 1)'; // Set the letter color
-    ctx.fillText('HUD: Head Up Display', 20, 100);
-    ctx.fillText('Triangle is drawn by Hud API.', 20, 200);
-    ctx.fillText('Cube is drawn by WebGL API.', 20, 220);
+    ctx.fillText('Next Scene  ', 10, 75);
+    
   }
 
   // Initialize renderer with scene and camera
