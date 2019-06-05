@@ -71,6 +71,11 @@ function main() {
     var flr = new Floor(texShader, image);
     scene.addGeometry(flr);
   });
+
+  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+    var flrtwo = new FloorTwo(texShader, image);
+    scene.addGeometry(flrtwo);
+  });
   /*
   inputHandler.readTexture("objs/image.jpg", function(image) {
     for (var i = 0; i < layout.length; i++) {
