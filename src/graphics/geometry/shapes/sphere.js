@@ -9,7 +9,7 @@ class Sphere extends Geometry {
   constructor(shader, segments, x, y, z) {
     super(shader);
     this.x = x;
-    this.xvel = 0.0;
+    this.xvel = 0.1;
     this.y = y;
     this.yvel = 0.5;
     this.z = z;
@@ -116,9 +116,9 @@ class Sphere extends Geometry {
     super.render();
 
     // Collision Detection x bounds
-    if(this.x > 29) {
+    if(this.x > 6) {
       this.xvel = -1 * Math.abs(this.xvel);
-    } else if(this.x < 1) {
+    } else if(this.x < -1) {
       this.xvel = Math.abs(this.xvel);
     }
 
