@@ -23,6 +23,11 @@ class Scene {
   addGeometry(geometry) {
     this.geometries.push(geometry);
   }
+
+  cutGeometry() {
+    this.geometries.pop();
+  }
+
   setLight(light) {
     this.light = light;
   }
