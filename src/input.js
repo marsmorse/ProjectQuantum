@@ -95,6 +95,8 @@ class InputHandler {
     }else if (keyName == "z") {
       this.camera.animating = 1;
     }else if (keyName == "x") {
+      this.scene.clearGeometries();
+    } else if (keyName == "v") {
       this.scene.cutGeometry();
     } else if(keyName == "c") {
       var circ = new Sphere(colorShader, 30, 2, 10, -8);
