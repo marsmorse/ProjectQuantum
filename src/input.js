@@ -97,7 +97,7 @@ class InputHandler {
     }else if (keyName == "x") {
       this.scene.clearGeometries();
     } else if(keyName == "c") {
-      var circ = new Sphere(colorShader, 30, 2, 14, -8);
+      var circ = new Sphere(colorShader, 30, 2, 10, -8);
       this.scene.addGeometry(circ);
     }
     

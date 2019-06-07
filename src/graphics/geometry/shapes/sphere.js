@@ -9,10 +9,12 @@ class Sphere extends Geometry {
   constructor(shader, segments, x, y, z) {
     super(shader);
     this.x = x;
+    // Random start velocity 
     this.xvel = Math.random() - 0.5;
     this.y = y;
     this.yvel = 0.5;
     this.z = z;
+    // Random start velocity
     this.zvel = Math.random() - 0.5;
     this.accel = -0.015;
     this.vertices = this.generateSphereVertices(segments);
@@ -137,6 +139,7 @@ class Sphere extends Geometry {
       this.zvel = Math.abs(this.zvel);
     }
 
+    // Apply acceleration due to gravity if sphere is off the ground
     if(this.y > 0.5) {
       this.yvel = this.yvel + this.accel;
     }
@@ -150,9 +153,9 @@ class Sphere extends Geometry {
 
     // Account for friction
     if(this.y < 0.51 && this.zvel > 0) {
-      this.zvel = this.zvel - 0.0016;
+      this.zvel = this.zvel - 0.0025;
     } else if(this.y < 0.51 && this.zvel < 0) {
-      this.zvel = this.zvel + 0.0016;
+      this.zvel = this.zvel + 0.0025;
     }
 
     
