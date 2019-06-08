@@ -69,6 +69,11 @@ function main() {
     scene.addGeometry(shape);
   });
 
+  inputHandler.readTexture("objs/backwall.png", function(image) {
+    var backsq = new BackSquare(texShader, image);
+    scene.addGeometry(backsq);
+  });
+
   inputHandler.readTexture("objs/hexfloor.png", function(image) {
     var flr = new Floor(texShader, image);
     scene.addGeometry(flr);
@@ -93,18 +98,18 @@ function main() {
   });
 
 
-  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+  inputHandler.readTexture("objs/waterwall.png", function(image) {
     var shape = new CoordSquare(texShader, image, -100, -1);
     scene.addGeometry(shape);
   });
-  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+  inputHandler.readTexture("objs/waterwall.png", function(image) {
     var shape = new CoordSquare(texShader, image, -100, -21);
     scene.addGeometry(shape);
   });
-  inputHandler.readTexture("objs/hexfloor.png", function(image) {
-    var shape = new CeilingSquare(texShader, image, -100);
-    scene.addGeometry(shape);
-  });
+  // inputHandler.readTexture("objs/hexfloor.png", function(image) {
+  //   var shape = new CeilingSquare(texShader, image, -100);
+  //   scene.addGeometry(shape);
+  // });
 
   /*
   
