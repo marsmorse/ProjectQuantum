@@ -47,7 +47,7 @@ var ASG1_FSHADER = `precision mediump float;
        float specAngle = max(dot(reflectDir, viewDir), 0.0);
        specular = pow(specAngle, 2.0);
     }
-    gl_FragColor = vec4(u_AmbientColor +
+    gl_FragColor = v_Color * vec4(u_AmbientColor +
       lambertian*u_DiffuseColor +specular * u_SpecularColor
                       , 1.0);
     
