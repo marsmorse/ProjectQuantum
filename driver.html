@@ -53,16 +53,7 @@
     </div>
     <!-- Buttons to load and print file content -->
     <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
-    <br/><br />
+
     <br/><br />
     <br/><br />
   
@@ -74,31 +65,13 @@
     </div>
   </br>
 </br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+
 </br>
     <p>
       Project Quantum
     </br>
         Eric Dunbar, Marshal Morse, Teddy Dyer
     </br>
-  Planning Document
-  </br>
-      </br>
 
 
 </br>
@@ -106,20 +79,14 @@
 Part 2 Documentation.
 </br>
 
-Description of the advanced methods created by each team member: 
-</br>
-</br>
 
-Theodore Dyer: 
-</br>
-I decided to implement physics and collision. I did not use any external libaraies for this, instead I built it 
-all from scratch. My physics logic included simulating object acceleration due to gravity, collision detection for the floor of the
-scene, and friction on the "floor" of a scene so spheres will eventually stop rolling around (x/z velocities -> 0) after their 'y' velocities 
-reach 0. 
-</br>
 
 
 </br>
+How to interact:
+'c' creates spheres that act according to physics in the first scene. 
+'v' deletes the last sphere created 
+'b' creates bouyant spheres that act with simulated under water physics. 
 </br>
 </br>
 </br>
@@ -137,13 +104,15 @@ Planning Document
     product or idea.  
 
   </br>
-Description of each of (team members x2) advanced methods you (plan to) have implemented.
+Description of each of (team members x2) advanced methods you have implemented.
 	Interactive HUD: We are going to use this for navigation. There can be a markers or buttons to click to get from 
     one screen to the next. We will be able to use this to make sure the user can get around the project.
   Text onto objects: We wanted to show how to do the interactions we created so we put text on the walls to 
   show how to do everything.
   Collision Detection: We added collision detection using our own math, against the wall and the ceilings and floors.
-  Object Physics: We made gravity and bouency and boucning.
+  Object Physics (gravity + friction): We simulated acceleration due to gravity to create semi-realistic physics for bouncing spheres, and friction 
+  so that the spheres eventually stop rolling. (done without the use of any outside library, built from scratch).
+  Under water Physics: simulated spheres with bouyancy in the second scene. 
   Color Picking: We made it so you can choose the color of the objects.
   KeyFraming: Moving the camera using keys insead and zooming around.
   </br>
