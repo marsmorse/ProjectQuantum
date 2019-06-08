@@ -7,10 +7,9 @@
 class Vertex {
   constructor(x, y, z) {
     this.point = new Vector3([x, y, z]);
-    this.getColors();    
+    this.color = getColors();
     this.texCoord = null;
     this.normal = new Vector3([0.0, 0.0, 0.0]);
-
   }
   getColors() {
     var sliderB = document.getElementById("bRange");
