@@ -42,13 +42,13 @@ class CoordSquare extends Geometry {
     generateSquareVertices(x, z) {
       var vertices = [];
       // top right
-      var vertex0 = new Vertex(x, 9, z);
+      var vertex0 = new Vertex(x - 100, 9, z);
       // bot right
-      var vertex1 = new Vertex(x, -1, z);
+      var vertex1 = new Vertex(x - 100, -1, z);
       // bot left
-      var vertex2 = new Vertex(x - 100, -1, z);
+      var vertex2 = new Vertex(x, -1, z);
       // top left
-      var vertex3 = new Vertex(x - 100, 9, z);
+      var vertex3 = new Vertex(x, 9, z);
   
       vertex0.texCoord = [1, 1];
       vertex1.texCoord = [1, 0];
