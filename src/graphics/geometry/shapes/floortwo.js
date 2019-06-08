@@ -4,7 +4,7 @@
  * @author Marshall Morse
  * @this {Square}
  */
-class Floor extends Geometry {
+class FloorTwo extends Geometry {
     /**
      * Constructor for Square.
      *
@@ -15,7 +15,7 @@ class Floor extends Geometry {
     constructor(shader, image) {
       super(shader);
       this.image = image;
-      this.vertices = this.generateFloorVertices(shader);
+      this.vertices = this.generateFloorTwoVertices(shader);
       this.faces = { 0: this.vertices };
   
       // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
@@ -37,12 +37,12 @@ class Floor extends Geometry {
         vectorb.elements[1] * vectora.elements[0] -
         vectorb.elements[0] * vectora.elements[1];
     }
-    generateFloorVertices() {
+    generateFloorTwoVertices() {
       var vertices = [];
-      var vertex0 = new Vertex(28, -0.5, -21);
-      var vertex1 = new Vertex(28, -0.5, -1.0);
-      var vertex2 = new Vertex(-4, -0.5, -1.0);
-      var vertex3 = new Vertex(-4, -0.5, -21);
+      var vertex0 = new Vertex(-4, -0.5, -21);
+      var vertex1 = new Vertex(-4, -0.5, -1.0);
+      var vertex2 = new Vertex(-36, -0.5, -1.0);
+      var vertex3 = new Vertex(-36, -0.5, -21);
   
       vertex0.texCoord = [1, 1];
       vertex1.texCoord = [1, 0];

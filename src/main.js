@@ -64,7 +64,7 @@ function main() {
 
   // Load texture and add triangle to the scene with that texture.
 
-  inputHandler.readTexture("objs/logo256.png", function(image) {
+  inputHandler.readTexture("objs/logo256c.png", function(image) {
     var shape = new Square(texShader, image);
     scene.addGeometry(shape);
   });
@@ -73,6 +73,12 @@ function main() {
     var flr = new Floor(texShader, image);
     scene.addGeometry(flr);
   });
+
+  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+    var flrtwo = new FloorTwo(texShader, image);
+    scene.addGeometry(flrtwo);
+  });
+
   /*
   
   inputHandler.readTexture("objs/image.jpg", function(image) {

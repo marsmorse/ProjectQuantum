@@ -9,11 +9,13 @@ class Sphere extends Geometry {
   constructor(shader, segments, x, y, z) {
     super(shader);
     this.x = x;
-    this.xvel = 0.1;
+    // Random start velocity 
+    this.xvel = Math.random() - 0.5;
     this.y = y;
     this.yvel = 0.5;
     this.z = z;
-    this.zvel = 0.2;
+    // Random start velocity
+    this.zvel = Math.random() - 0.5;
     this.accel = -0.015;
     this.vertices = this.generateSphereVertices(segments);
     this.transformMatrix = new Matrix4();
@@ -127,19 +129,35 @@ class Sphere extends Geometry {
       this.yvel = -1 * Math.abs(this.yvel);
     } else if(this.y < 0.8) {
       this.yvel = Math.abs(this.yvel);
-      this.yvel = this.yvel * 0.9;
+      this.yvel = this.yvel * 0.82;
     }
 
     // Collision Detection z bounds
-    if(this.z > -4) {
+    if(this.z > -2) {
       this.zvel = -1 * Math.abs(this.zvel);
-    } else if(this.z < -18) {
+    } else if(this.z < -20) {
       this.zvel = Math.abs(this.zvel);
     }
 
+    // Apply acceleration due to gravity if sphere is off the ground
     if(this.y > 0.5) {
       this.yvel = this.yvel + this.accel;
     }
+    
+    // Account for friction
+    if(this.y < 0.51 && this.xvel > 0) {
+      this.xvel = this.xvel - 0.0016;
+    } else if(this.y < 0.51 && this.xvel < 0) {
+      this.xvel = this.xvel + 0.0016;
+    }
+
+    // Account for friction
+    if(this.y < 0.51 && this.zvel > 0) {
+      this.zvel = this.zvel - 0.0025;
+    } else if(this.y < 0.51 && this.zvel < 0) {
+      this.zvel = this.zvel + 0.0025;
+    }
+
     
 
     this.transformMatrix.setTranslate(this.xvel,this.yvel,this.zvel);
