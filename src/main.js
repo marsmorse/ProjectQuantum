@@ -64,7 +64,7 @@ function main() {
 
   // Load texture and add triangle to the scene with that texture.
 
-  inputHandler.readTexture("objs/logo256c.png", function(image) {
+  inputHandler.readTexture("objs/logo512c.png", function(image) {
     var shape = new Square(texShader, image);
     scene.addGeometry(shape);
   });
