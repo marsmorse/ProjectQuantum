@@ -79,6 +79,19 @@ function main() {
     scene.addGeometry(flrtwo);
   });
 
+  inputHandler.readTexture("objs/stripes.png", function(image) {
+    var shape = new CoordSquare(texShader, image, -2, -1);
+    scene.addGeometry(shape);
+  });
+  inputHandler.readTexture("objs/stripes.png", function(image) {
+    var shape = new CoordSquare(texShader, image, -2, -21);
+    scene.addGeometry(shape);
+  });
+  inputHandler.readTexture("objs/stripes.png", function(image) {
+    var shape = new CeilingSquare(texShader, image);
+    scene.addGeometry(shape);
+  });
+
   /*
   
   inputHandler.readTexture("objs/image.jpg", function(image) {
@@ -95,6 +108,8 @@ function main() {
   scene.addGeometry(shape);
   var shape2 = new Sphere(colorShader, 30, 2, 17, -17);
   scene.addGeometry(shape2);
+
+ 
 
   // var shape2 = new Sphere(colorShader, 30, 5, 15, 5);
   // scene.addGeometry(shape2);
