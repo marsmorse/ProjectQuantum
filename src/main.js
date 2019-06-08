@@ -79,16 +79,30 @@ function main() {
     scene.addGeometry(flrtwo);
   });
 
-  inputHandler.readTexture("objs/rainb.png", function(image) {
+  inputHandler.readTexture("objs/blackwhite.png", function(image) {
     var shape = new CoordSquare(texShader, image, -2, -1);
     scene.addGeometry(shape);
   });
-  inputHandler.readTexture("objs/rainb.png", function(image) {
+  inputHandler.readTexture("objs/blackwhite.png", function(image) {
     var shape = new CoordSquare(texShader, image, -2, -21);
     scene.addGeometry(shape);
   });
-  inputHandler.readTexture("objs/rainb.png", function(image) {
-    var shape = new CeilingSquare(texShader, image);
+  inputHandler.readTexture("objs/blackwhite.png", function(image) {
+    var shape = new CeilingSquare(texShader, image, -4);
+    scene.addGeometry(shape);
+  });
+
+
+  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+    var shape = new CoordSquare(texShader, image, -100, -1);
+    scene.addGeometry(shape);
+  });
+  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+    var shape = new CoordSquare(texShader, image, -100, -21);
+    scene.addGeometry(shape);
+  });
+  inputHandler.readTexture("objs/hexfloor.png", function(image) {
+    var shape = new CeilingSquare(texShader, image, -100);
     scene.addGeometry(shape);
   });
 
