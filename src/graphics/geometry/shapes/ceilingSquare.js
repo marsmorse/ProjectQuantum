@@ -12,10 +12,11 @@ class CeilingSquare extends Geometry {
      * @param {Shader} shader Shading object used to shade geometry
      * @returns {Square} Square created
      */
-    constructor(shader, image) {
+    constructor(shader, image, x) {
       super(shader);
+      this.x = x
       this.image = image;
-      this.vertices = this.generateFloorTwoVertices(shader);
+      this.vertices = this.generateFloorTwoVertices(x);
       this.faces = { 0: this.vertices };
   
       // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
@@ -37,12 +38,12 @@ class CeilingSquare extends Geometry {
         vectorb.elements[1] * vectora.elements[0] -
         vectorb.elements[0] * vectora.elements[1];
     }
-    generateFloorTwoVertices() {
+    generateFloorTwoVertices(x) {
       var vertices = [];
-      var vertex0 = new Vertex(-100, 9, -21);
-      var vertex1 = new Vertex(-100, 9, -1.0);
-      var vertex2 = new Vertex(-4, 9, -1.0);
-      var vertex3 = new Vertex(-4, 9, -21);
+      var vertex0 = new Vertex(x-100, 9, -21);
+      var vertex1 = new Vertex(x-100, 9, -1.0);
+      var vertex2 = new Vertex(x, 9, -1.0);
+      var vertex3 = new Vertex(x, 9, -21);
   
       vertex0.texCoord = [1, 1];
       vertex1.texCoord = [1, 0];

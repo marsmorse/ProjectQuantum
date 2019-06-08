@@ -41,8 +41,8 @@ class FloorTwo extends Geometry {
       var vertices = [];
       var vertex0 = new Vertex(-4, -0.5, -21);
       var vertex1 = new Vertex(-4, -0.5, -1.0);
-      var vertex2 = new Vertex(-100, -0.5, -1.0);
-      var vertex3 = new Vertex(-100, -0.5, -21);
+      var vertex2 = new Vertex(-150, -0.5, -1.0);
+      var vertex3 = new Vertex(-150, -0.5, -21);
   
       vertex0.texCoord = [1, 1];
       vertex1.texCoord = [1, 0];
