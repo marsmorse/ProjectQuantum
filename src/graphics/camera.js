@@ -145,9 +145,8 @@ class Camera {
   updateAnimation(){
     this.time+= .008;
     if(this.time >=this.duration){
-      this.resetAnimation(25,0);
+      this.resetAnimation(120,0);
     }else{
-      
       var eyeProgress = this.endPosEye.sub(this.startPosEye).mul(this.time).add(this.startPosEye);
       var centerProgress = this.endPosCenter.sub(this.startPosCenter).mul(this.time).add(this.startPosCenter);
       this.eye = eyeProgress;

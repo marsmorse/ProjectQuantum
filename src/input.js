@@ -15,7 +15,6 @@ class InputHandler {
     this.scene = scene;
     this.camera = camera;
     this.hud = hud;
-
     _inputHandler = this;
 
     // Mouse Events
