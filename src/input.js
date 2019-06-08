@@ -132,6 +132,9 @@ class InputHandler {
     } else if(keyName == "c") {
       var circ = new Sphere(colorShader, 30, 2, 10, -8);
       this.scene.addGeometry(circ);
+    } else if(keyName == "b") {
+      var bouy = new BouySphere(colorShader, 30, -110, 7, -15);
+      this.scene.addGeometry(bouy);
     }
     
   }

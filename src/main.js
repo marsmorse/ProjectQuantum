@@ -69,6 +69,11 @@ function main() {
     scene.addGeometry(shape);
   });
 
+  inputHandler.readTexture("objs/backwall.png", function(image) {
+    var backsq = new BackSquare(texShader, image);
+    scene.addGeometry(backsq);
+  });
+
   inputHandler.readTexture("objs/hexfloor.png", function(image) {
     var flr = new Floor(texShader, image);
     scene.addGeometry(flr);
